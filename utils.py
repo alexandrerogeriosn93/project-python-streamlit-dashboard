@@ -1,4 +1,5 @@
 from dataset import data_frame
+import pandas as pd
 
 
 def format_number(value, prefix=""):
@@ -19,3 +20,14 @@ data_frame_revenue_by_state = (
     .merge(data_frame_revenue_by_state, left_on="Local da compra", right_index=True)
     .sort_values("Preço", ascending=False)
 )
+
+data_frame_revenue_monthly = (
+    data_frame.set_index("Data da Compra")
+    .groupby(pd.Grouper(freq="M"))["Preço"]
+    .sum()
+    .reset_index()
+)
+data_frame_revenue_monthly["Ano"] = data_frame_revenue_monthly["Data da Compra"].dt.year
+data_frame_revenue_monthly["Mes"] = data_frame_revenue_monthly[
+    "Data da Compra"
+].dt.month_name()
