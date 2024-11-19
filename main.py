@@ -13,6 +13,12 @@ from graphs import (
 
 st.set_page_config(layout="wide")
 st.title("Dashboard de Vendas :shopping_trolley:")
+st.sidebar.title("Filtro de Vendedores")
+
+filter_seller = st.sidebar.multiselect("Vendedores", data_frame["Vendedor"].unique())
+
+if filter_seller:
+    data_frame = data_frame[data_frame["Vendedor"].isin(filter_seller)]
 
 first_tab, second_tab, third_tab = st.tabs(["Dataset", "Receita", "Vendedores"])
 
