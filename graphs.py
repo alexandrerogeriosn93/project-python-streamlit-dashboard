@@ -1,5 +1,9 @@
 import plotly.express as px
-from utils import data_frame_revenue_by_state, data_frame_revenue_monthly
+from utils import (
+    data_frame_revenue_by_state,
+    data_frame_revenue_monthly,
+    data_frame_revenue_by_category,
+)
 
 graph_map_by_state = px.scatter_geo(
     data_frame_revenue_by_state,
@@ -32,4 +36,10 @@ graph_revenue_state = px.bar(
     y="Preço",
     text_auto=True,
     title="Maior Receita por Estados",
+)
+
+graph_revenue_category = px.bar(
+    data_frame_revenue_by_category.head(5),
+    text_auto=True,
+    title="Maiores Receitas por Categoria",
 )

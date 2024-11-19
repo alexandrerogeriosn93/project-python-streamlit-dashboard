@@ -23,7 +23,7 @@ data_frame_revenue_by_state = (
 
 data_frame_revenue_monthly = (
     data_frame.set_index("Data da Compra")
-    .groupby(pd.Grouper(freq="M"))["Preço"]
+    .groupby(pd.Grouper(freq="ME"))["Preço"]
     .sum()
     .reset_index()
 )
@@ -31,3 +31,9 @@ data_frame_revenue_monthly["Ano"] = data_frame_revenue_monthly["Data da Compra"]
 data_frame_revenue_monthly["Mes"] = data_frame_revenue_monthly[
     "Data da Compra"
 ].dt.month_name()
+
+data_frame_revenue_by_category = (
+    data_frame.groupby("Categoria do Produto")[["Preço"]]
+    .sum()
+    .sort_values("Preço", ascending=False)
+)
