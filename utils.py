@@ -37,3 +37,7 @@ data_frame_revenue_by_category = (
     .sum()
     .sort_values("Preço", ascending=False)
 )
+
+data_frame_sellers = pd.DataFrame(
+    data_frame.groupby("Vendedor")["Preço"].agg(["sum", "count"])
+)

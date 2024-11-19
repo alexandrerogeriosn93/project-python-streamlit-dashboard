@@ -3,6 +3,7 @@ from utils import (
     data_frame_revenue_by_state,
     data_frame_revenue_monthly,
     data_frame_revenue_by_category,
+    data_frame_sellers,
 )
 
 graph_map_by_state = px.scatter_geo(
@@ -42,4 +43,12 @@ graph_revenue_category = px.bar(
     data_frame_revenue_by_category.head(5),
     text_auto=True,
     title="Maiores Receitas por Categoria",
+)
+
+graph_revenue_sellers = px.bar(
+    data_frame_sellers[["sum"]].sort_values("sum", ascending=False).head(5),
+    x="sum",
+    y=data_frame_sellers[["sum"]].sort_values("sum", ascending=False).head(5).index,
+    text_auto=True,
+    title="Melhores Receitas por Vendedor",
 )

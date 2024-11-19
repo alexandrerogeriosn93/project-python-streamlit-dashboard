@@ -7,6 +7,7 @@ from graphs import (
     graph_revenue_monthly,
     graph_revenue_state,
     graph_revenue_category,
+    graph_revenue_sellers,
 )
 
 st.set_page_config(layout="wide")
@@ -30,3 +31,10 @@ with second_tab:
         st.metric("Quantidade de vendas", format_number(data_frame.shape[0]))
         st.plotly_chart(graph_revenue_monthly, use_container_width=True)
         st.plotly_chart(graph_revenue_category, use_container_width=True)
+
+
+with third_tab:
+    first_column, second_column = st.columns(2)
+
+    with first_column:
+        st.plotly_chart(graph_revenue_sellers)
