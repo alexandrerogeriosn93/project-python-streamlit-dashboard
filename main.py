@@ -7,7 +7,7 @@ from graphs import (
     graph_revenue_state,
     graph_revenue_category,
     graph_revenue_sellers,
-    graph_quantity_sales_by_selers,
+    graph_quantity_sales_by_sellers,
 )
 
 st.set_page_config(layout="wide")
@@ -46,4 +46,4 @@ with third_tab:
         st.plotly_chart(graph_revenue_sellers)
 
     with second_column:
-        st.plotly_chart(graph_quantity_sales_by_selers)
+        st.plotly_chart(graph_quantity_sales_by_sellers)

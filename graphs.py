@@ -53,7 +53,7 @@ graph_revenue_sellers = px.bar(
     title="Melhores Receitas por Vendedor",
 )
 
-graph_quantity_sales_by_selers = px.bar(
+graph_quantity_sales_by_sellers = px.bar(
     data_frame_sellers[["count"]].sort_values("count", ascending=False).head(5),
     x="count",
     y=data_frame_sellers[["count"]].sort_values("count", ascending=False).head(5).index,
