@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.express as px
 from dataset import data_frame
 from utils import format_number
-from graphs import graph_map_by_state
+from graphs import graph_map_by_state, graph_revenue_monthly, graph_revenue_state
 
 st.set_page_config(layout="wide")
 st.title("Dashboard de Vendas :shopping_trolley:")
@@ -19,6 +19,8 @@ with second_tab:
     with first_column:
         st.metric("Receita total", format_number(data_frame["Preço"].sum(), "R$"))
         st.plotly_chart(graph_map_by_state, use_container_width=True)
+        st.plotly_chart(graph_revenue_state, use_container_width=True)
 
     with second_column:
         st.metric("Quantidade de vendas", format_number(data_frame.shape[0]))
+        st.plotly_chart(graph_revenue_monthly, use_container_width=True)
