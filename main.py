@@ -1,5 +1,4 @@
 import streamlit as st
-import plotly.express as px
 from dataset import data_frame
 from utils import format_number
 from graphs import (
